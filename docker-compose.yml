@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mariadb
+    container_name: nodex-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - nodex_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: nodex1234
+      MYSQL_DATABASE: nodex
+      MYSQL_USER: nodex
+      MYSQL_PASSWORD: nodex1234
+
+  nodex:
+    build: .
+    container_name: nodex-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/nodex?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: nodex
+      SPRING_DATASOURCE_PASSWORD: nodex1234
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+volumes:
+  nodex_data:
+
