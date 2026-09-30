@@ -4,7 +4,6 @@ import com.nodex.nodex.entity.Vlan;
 import com.nodex.nodex.entity.dto.VlanResponseDto;
 import com.nodex.nodex.entity.dto.VlanRequestDto;
 import com.nodex.nodex.repository.VlanRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.apache.coyote.BadRequestException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
