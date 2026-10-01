@@ -17,12 +17,10 @@ import java.util.List;
 public class VlanService {
     private final VlanRepository repository;
     private final VlanMapper vlanMapper;
-    private final ModelMapper modelMapper;
 
     public VlanService(VlanRepository repository, VlanMapper vlanMapper, ModelMapper modelMapper) {
         this.repository = repository;
         this.vlanMapper = vlanMapper;
-        this.modelMapper = modelMapper;
     }
 
     public List<VlanResponseDto> getAll() {
@@ -45,13 +43,10 @@ public class VlanService {
         Vlan vlan = repository.findById(id).orElseThrow(() -> new BadRequestException("Vlan by ID: " + id + " not found!"));
 
         if (!request.getNumber().equals(vlan.getNumber()) && repository.existsByNumber(request.getNumber())) {
-            throw new BadRequestException("Vlan " + vlan.getNumber() + " already exists!");
+            throw new BadRequestException("Vlan " + request.getNumber() + " already exists!");
         }
 
-        vlan.setNumber(request.getNumber());
-        vlan.setName(request.getName());
-        vlan.setDescription(request.getDescription());
-        vlan.setActive(request.getActive());
+        vlanMapper.updateEntityFromDto(vlan, request);
 
         Vlan updatedVlan = repository.save(vlan);
 
@@ -82,6 +77,6 @@ public class VlanService {
     // HELPER FUNCTIONS
 
     private VlanResponseDto toDto(Vlan vlan){
-        return modelMapper.map(vlan, VlanResponseDto.class);
+        return vlanMapper.toDto(vlan);
     }
 }
