@@ -3,6 +3,7 @@ package com.nodex.nodex.controller;
 import com.nodex.nodex.dto.VlanResponseDto;
 import com.nodex.nodex.dto.VlanRequestDto;
 import com.nodex.nodex.service.VlanService;
+import jakarta.validation.Valid;
 import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class VlanController {
     }
 
     @PostMapping
-    public VlanResponseDto create(@RequestBody VlanRequestDto vlan) throws BadRequestException {
+    public VlanResponseDto create(@Valid @RequestBody VlanRequestDto vlan) throws BadRequestException {
         return service.create(vlan);
     }
 
