@@ -1,6 +1,5 @@
-package com.nodex.nodex.entity.dto;
+package com.nodex.nodex.dto;
 
-import com.nodex.nodex.entity.Vlan;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

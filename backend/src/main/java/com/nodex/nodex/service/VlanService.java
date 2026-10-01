@@ -1,8 +1,9 @@
 package com.nodex.nodex.service;
 
 import com.nodex.nodex.entity.Vlan;
-import com.nodex.nodex.entity.dto.VlanResponseDto;
-import com.nodex.nodex.entity.dto.VlanRequestDto;
+import com.nodex.nodex.dto.VlanResponseDto;
+import com.nodex.nodex.dto.VlanRequestDto;
+import com.nodex.nodex.mapper.VlanMapper;
 import com.nodex.nodex.repository.VlanRepository;
 import org.apache.coyote.BadRequestException;
 import org.modelmapper.ModelMapper;
@@ -15,11 +16,12 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class VlanService {
     private final VlanRepository repository;
-
+    private final VlanMapper vlanMapper;
     private final ModelMapper modelMapper;
 
-    public VlanService(VlanRepository repository, ModelMapper modelMapper) {
+    public VlanService(VlanRepository repository, VlanMapper vlanMapper, ModelMapper modelMapper) {
         this.repository = repository;
+        this.vlanMapper = vlanMapper;
         this.modelMapper = modelMapper;
     }
 
@@ -63,11 +65,7 @@ public class VlanService {
             throw new BadRequestException("Vlan with number " + vlanDto.getNumber() + " already exists");
         }
 
-        Vlan vlan = new Vlan();
-        vlan.setNumber(vlanDto.getNumber());
-        vlan.setName(vlanDto.getName());
-        vlan.setDescription(vlanDto.getDescription());
-        vlan.setActive(true);
+        Vlan vlan = vlanMapper.toEntity(vlanDto);
 
         Vlan newVlan = repository.saveAndFlush(vlan);
 

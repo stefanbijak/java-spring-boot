@@ -1,4 +1,4 @@
-package com.nodex.nodex.entity.dto;
+package com.nodex.nodex.dto;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

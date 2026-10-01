@@ -2,8 +2,8 @@ package com.nodex.nodex.service;
 
 import com.nodex.nodex.entity.Subnet;
 import com.nodex.nodex.entity.Vlan;
-import com.nodex.nodex.entity.dto.SubnetRequestDto;
-import com.nodex.nodex.entity.dto.SubnetResponseDto;
+import com.nodex.nodex.dto.SubnetRequestDto;
+import com.nodex.nodex.dto.SubnetResponseDto;
 import com.nodex.nodex.repository.SubnetRepository;
 import com.nodex.nodex.repository.VlanRepository;
 import jakarta.persistence.EntityNotFoundException;

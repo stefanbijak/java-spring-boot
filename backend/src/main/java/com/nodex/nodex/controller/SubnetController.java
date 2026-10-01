@@ -1,8 +1,7 @@
 package com.nodex.nodex.controller;
 
-import com.nodex.nodex.entity.Subnet;
-import com.nodex.nodex.entity.dto.SubnetRequestDto;
-import com.nodex.nodex.entity.dto.SubnetResponseDto;
+import com.nodex.nodex.dto.SubnetRequestDto;
+import com.nodex.nodex.dto.SubnetResponseDto;
 import com.nodex.nodex.service.SubnetService;
 import org.springframework.web.bind.annotation.*;
 
