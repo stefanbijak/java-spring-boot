@@ -35,5 +35,5 @@ public class Subnet {
     private String dnsSecondary;
 
     @Column(name="active")
-    private Boolean active = true;
+    private Boolean active;
 }

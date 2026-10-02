@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class SubnetResponseDto {
     private Integer id;
     private VlanResponseDto vlan;
+
     private String network;
     private Integer cidr;
     private String netmask;

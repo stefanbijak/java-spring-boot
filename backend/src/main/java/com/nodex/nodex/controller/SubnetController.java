@@ -3,6 +3,9 @@ package com.nodex.nodex.controller;
 import com.nodex.nodex.dto.SubnetRequestDto;
 import com.nodex.nodex.dto.SubnetResponseDto;
 import com.nodex.nodex.service.SubnetService;
+import jakarta.validation.Valid;
+import org.apache.coyote.BadRequestException;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,22 +21,27 @@ public class SubnetController {
     }
 
     @GetMapping
-    public List<SubnetResponseDto> getAll(@RequestParam(required = false) Boolean active) {
-        return service.getAll(active);
+    public List<SubnetResponseDto> getAll(){
+        return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public SubnetResponseDto get(@PathVariable Integer id){
-        return service.get(id);
+    public SubnetResponseDto getById(@PathVariable Integer id) throws BadRequestException {
+        return service.getById(id);
     }
 
     @PostMapping
-    public SubnetResponseDto create(@RequestBody SubnetRequestDto subnet){
-        return service.create(subnet);
+    public SubnetResponseDto create(@Valid @RequestBody SubnetRequestDto dto) throws BadRequestException{
+        return service.create(dto);
+    }
+
+    @PutMapping("/{id}")
+    public SubnetResponseDto update(@Valid @RequestBody SubnetRequestDto dto, @PathVariable Integer id) throws BadRequestException{
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Integer id) throws BadRequestException{
         service.delete(id);
     }
 }

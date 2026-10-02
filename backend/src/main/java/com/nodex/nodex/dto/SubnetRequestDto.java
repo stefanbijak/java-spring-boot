@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class SubnetRequestDto {
+
     @NotNull
     private Integer vlanId;
 
@@ -22,6 +23,8 @@ public class SubnetRequestDto {
     @Min(0)
     @Max(32)
     private Integer cidr;
+
+    private String netmask;
 
     private String dnsPrimary;
 
