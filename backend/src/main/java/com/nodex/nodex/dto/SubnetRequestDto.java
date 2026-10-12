@@ -29,4 +29,5 @@ public class SubnetRequestDto {
     private String dnsPrimary;
 
     private String dnsSecondary;
+
 }

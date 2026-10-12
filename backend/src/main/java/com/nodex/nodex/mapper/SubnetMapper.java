@@ -31,6 +31,7 @@ public class SubnetMapper {
         subnet.setNetmask(dto.getNetmask());
         subnet.setDnsPrimary(dto.getDnsPrimary());
         subnet.setDnsSecondary(dto.getDnsSecondary());
+        subnet.setActive(true);
 
         return subnet;
     }

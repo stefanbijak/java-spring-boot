@@ -7,10 +7,8 @@ import com.nodex.nodex.dto.SubnetResponseDto;
 import com.nodex.nodex.mapper.SubnetMapper;
 import com.nodex.nodex.repository.SubnetRepository;
 import com.nodex.nodex.repository.VlanRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.apache.coyote.BadRequestException;
-import org.hibernate.boot.jaxb.internal.stax.AbstractEventReader;
-import org.modelmapper.ModelMapper;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

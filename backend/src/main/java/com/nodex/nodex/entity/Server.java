@@ -22,9 +22,6 @@ public class Server {
     @Column(name="hostname")
     private String hostname;
 
-    @Column(name="domain")
-    private String domain;
-
     @Enumerated(EnumType.STRING)
     @Column(name="server_type")
     private ServerType serverType;
@@ -42,9 +39,6 @@ public class Server {
     @Enumerated(EnumType.STRING)
     @Column(name="server_status")
     private ServerStatus serverStatus;
-
-    @Column(name="maintenance_ip")
-    private String maintenanceIp;
 
     @Column(name="cpu_cores")
     private Integer cpuCores;
