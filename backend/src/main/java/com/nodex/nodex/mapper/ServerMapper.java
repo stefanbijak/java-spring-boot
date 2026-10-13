@@ -67,4 +67,25 @@ public class ServerMapper {
 
         return responseDto;
     }
+
+    public void updateEntityFromDto(ServerRequestDto requestDto, Server server){
+
+        server.setHostname(requestDto.getHostname());
+
+        server.setServerType(requestDto.getServerType());
+
+        server.setOsType(requestDto.getOsType());
+
+        server.setRackLocation(requestDto.getRackLocation());
+
+        server.setEnvironment(requestDto.getEnvironment());
+
+        server.setServerStatus(requestDto.getServerStatus());
+
+        server.setCpuCores(requestDto.getCpuCores());
+
+        server.setRamGb(requestDto.getRamGb());
+
+        server.setDiskGb(requestDto.getDiskGb());
+    }
 }
